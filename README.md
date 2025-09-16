@@ -1,7 +1,7 @@
 ## Instalación
 
 ### Frontend
-cd frontend
+cd frontend/finanzas-frontend
 npm install
 npm run dev
 

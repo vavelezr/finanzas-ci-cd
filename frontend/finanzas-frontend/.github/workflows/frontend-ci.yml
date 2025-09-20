@@ -1,0 +1,47 @@
+name: Frontend CI
+
+on:
+  push:
+    paths:
+      - 'frontend/finanzas-frontend/**'
+  pull_request:
+    paths:
+      - 'frontend/finanzas-frontend/**'
+
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend/finanzas-frontend
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      # - name: Run unit tests
+      #   run: |
+      #     # Ajusta el comando según tu framework de pruebas
+      #     npm test
+
+      - name: Build app
+        run: npm run build
+
+      - name: Build Docker image
+        run: docker build -t frontend-app .
+
+      - name: Save Docker image as artifact
+        run: docker save frontend-app | gzip > frontend-app.tar.gz
+
+      - name: Upload Docker image artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-docker-image
+          path: frontend-app.tar.gz

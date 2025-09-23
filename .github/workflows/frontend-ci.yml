@@ -37,7 +37,7 @@ jobs:
         run: npx eslint src --max-warnings=0 || true
 
       - name: Run Unit Tests
-        run: npm test -- --watchAll=false --ci --coverage
+        run: npm test -- --run --coverage
 
       - name: Build app
         run: npm run build

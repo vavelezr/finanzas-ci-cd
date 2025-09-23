@@ -1,0 +1,9 @@
+sonar.projectKey=[TU_USUARIO]_project
+sonar.organization=
+sonar.sources=app
+sonar.python.version=3.12
+sonar.python.pylint.reportPaths=pylint-report.txt
+sonar.coverage.exclusions=**/tests/**,**/setup.py,app/__init__.py
+sonar.python.coverage.reportPaths=coverage.xml
+sonar.qualitygate.wait=true
+sonar.qualitygate.timeout=300

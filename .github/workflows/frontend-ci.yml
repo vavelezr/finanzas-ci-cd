@@ -28,9 +28,9 @@ jobs:
         with:
           node-version: '18'
           cache: 'npm'
+          cache-dependency-path: frontend/finanzas-frontend/package-lock.json
 
       - name: Install dependencies
-        working-directory: frontend/finanzas-frontend
         run: npm ci
 
       - name: Run ESLint (Linter)

@@ -7,5 +7,9 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: './tests/setupTests.js',
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'lcov'], // text = consola, lcov = para SonarCloud
+    },
   }
 })
